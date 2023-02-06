@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +36,8 @@ Route::get('/admin', function(){
 Route::get('/user', function(){
     return view('home');
 })->middleware(['auth', 'role:User']);
+
+Route::group(['middleware' => ['auth', 'role:Super Admin']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
+});
