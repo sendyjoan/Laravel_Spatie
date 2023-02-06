@@ -5,7 +5,13 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Permission table</h6>
+            <h6>Role table</h6>
+            <button type="button" class="btn btn-outline-success">Add Role</button>
+            <button type="button" class="btn btn-outline-success">Import From CSV</button>
+            <button type="button" class="btn btn-outline-success">Import From Excel</button>
+            <button type="button" class="btn btn-outline-danger">Export To Excel</button>
+            <button type="button" class="btn btn-outline-danger">Export To CSV</button>
+            <button type="button" class="btn btn-outline-danger">Export To PDF</button>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
@@ -17,7 +23,8 @@
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created Date</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edited Date</th>
-                    <th class="text-secondary opacity-7"></th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -42,10 +49,10 @@
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{ $role->updated_at }}</span>
                     </td>
-                    <td class="align-middle">
-                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                      </a>
+                    <td class="align-middle text-center">
+                      <button type="button" class="btn bg-gradient-success btn-sm"><i class="ni ni-pin-3"></i></button>
+                      <button type="button" class="btn bg-gradient-info btn-sm"><i class="ni ni-settings"></i></button>
+                      <button type="button" class="btn bg-gradient-danger btn-sm"><i class="ni ni-basket"></i></button>
                     </td>
                   </tr>
                   @endforeach
