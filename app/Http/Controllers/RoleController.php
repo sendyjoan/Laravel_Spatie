@@ -75,7 +75,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
+        Role::where('id', $id)->update(['name'=>$request->name,]);
+        
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -86,6 +92,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::where('id', $id)->delete();
+        return redirect()->route('roles.index');
     }
 }

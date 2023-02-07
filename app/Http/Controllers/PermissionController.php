@@ -75,7 +75,13 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
+        Permission::where('id', $id)->update(['name'=>$request->name,]);
+        
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -86,6 +92,7 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permission::where('id', $id)->delete();
+        return redirect()->route('permissions.index');
     }
 }
