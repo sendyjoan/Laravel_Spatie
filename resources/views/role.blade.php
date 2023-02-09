@@ -112,6 +112,9 @@
             <button type="button" class="btn btn-primary btn-sm">Assign Permission</button>
           </div>
         </div>
+        @if ($rolecrud->permissions)
+            <p>{{$rolecrud->permissions}}</p>
+        @endif
       </div>
       <div class="modal-footer">
         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
