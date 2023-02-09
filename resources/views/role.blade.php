@@ -109,11 +109,16 @@
         <div class="row">
           <div class="col-8"></div>
           <div class="col-4">
-            <button type="button" class="btn btn-primary btn-sm">Assign Permission</button>
+            <a href="{{route('roles.edit', $rolecrud->id)}}">
+              <button type="button" class="btn btn-primary btn-sm">Assign Permission</button>
+            </a>
           </div>
         </div>
         @if ($rolecrud->permissions)
             <p>{{$rolecrud->permissions}}</p>
+            @foreach ($rolecrud->permissions as $permission)
+                <p>{{$permission->name}}</p>
+            @endforeach
         @endif
       </div>
       <div class="modal-footer">

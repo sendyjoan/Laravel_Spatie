@@ -63,7 +63,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findById($id);
+        // dd($role);
+        return view('assignrolepermission', compact('role'));
     }
 
     /**
