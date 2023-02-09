@@ -106,20 +106,21 @@
         <p>Created At : {{$rolecrud->created_at}}</p>
         <p>Updated At : {{$rolecrud->updated_at}}</p>
         <h6>Permission List</h6>
+        @if ($rolecrud->permissions)
+            @foreach ($rolecrud->permissions as $permission)
+              <button type="button" class="btn btn-secondary btn-sm" disabled>{{$permission->name}}</button>
+            @endforeach
+        @endif
         <div class="row">
-          <div class="col-8"></div>
-          <div class="col-4">
+          <div class="col-8">
             <a href="{{route('roles.edit', $rolecrud->id)}}">
               <button type="button" class="btn btn-primary btn-sm">Assign Permission</button>
             </a>
           </div>
+          <div class="col-4">
+            
+          </div>
         </div>
-        @if ($rolecrud->permissions)
-            <p>{{$rolecrud->permissions}}</p>
-            @foreach ($rolecrud->permissions as $permission)
-                <p>{{$permission->name}}</p>
-            @endforeach
-        @endif
       </div>
       <div class="modal-footer">
         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
