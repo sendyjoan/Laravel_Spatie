@@ -39,5 +39,6 @@ Route::get('/user', function(){
 
 Route::group(['middleware' => ['auth', 'role:Super Admin']], function() {
     Route::resource('roles', RoleController::class);
+    Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('admin.roles.permissions');
     Route::resource('permissions', PermissionController::class);
 });
