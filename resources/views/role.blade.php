@@ -105,6 +105,13 @@
         <p>Guard Name : {{$rolecrud->guard_name}}</p>
         <p>Created At : {{$rolecrud->created_at}}</p>
         <p>Updated At : {{$rolecrud->updated_at}}</p>
+        <h6>Permission List</h6>
+        <div class="row">
+          <div class="col-8"></div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary btn-sm">Assign Permission</button>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
