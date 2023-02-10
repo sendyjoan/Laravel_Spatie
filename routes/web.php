@@ -43,4 +43,5 @@ Route::group(['middleware' => ['auth', 'role:Super Admin']], function() {
     Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
     Route::resource('permissions', PermissionController::class);
     Route::post('/permissions/{permission}/roless', [PermissionController::class, 'assignRole'])->name('admin.permissions.roles');
+    Route::delete('/permissions/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
 });
