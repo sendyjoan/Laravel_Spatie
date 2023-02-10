@@ -41,7 +41,7 @@
                       <span class="text-secondary text-xs font-weight-bold">{{ $role->guard_name }}</span>
                     </td>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Online</span>
+                      <span class="badge badge-sm bg-gradient-success">Active</span>
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{ $role->created_at }}</span>
@@ -118,7 +118,6 @@
             </a>
           </div>
           <div class="col-4">
-            
           </div>
         </div>
       </div>
