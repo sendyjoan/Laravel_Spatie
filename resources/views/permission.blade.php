@@ -104,6 +104,21 @@
           <p> Guard Name : {{$crudper->guard_name}}</p>
           <p> Created At : {{$crudper->created_at}}</p>
           <p> Updated At : {{$crudper->updated_at}}</p>
+          <h6>Role List List</h6>
+          @if ($crudper->roles)
+            @foreach ($crudper->roles as $role)
+              <button type="button" class="btn btn-secondary btn-sm" disabled>{{$role->name}}</button>
+            @endforeach
+        @endif
+        <div class="row">
+          <div class="col-8">
+            <a href="{{route('permissions.edit', $crudper->id)}}">
+              <button type="button" class="btn btn-primary btn-sm">Assign Role</button>
+            </a>
+          </div>
+          <div class="col-4">
+          </div>
+        </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>

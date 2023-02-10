@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -63,7 +64,10 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::findById($id);
+        $roles = Role::all();
+        // dd($permission);
+        return view('assignpermissionrole', compact('permission', 'roles'));
     }
 
     /**
@@ -94,5 +98,15 @@ class PermissionController extends Controller
     {
         Permission::where('id', $id)->delete();
         return redirect()->route('permissions.index');
+    }
+
+    public function assignRole(Request $request, Permission $permission)
+    {
+        if ($permission->hasRole($request->role)) {
+            return back()->with('message', 'Role exists.');
+        }
+
+        $permission->assignRole($request->role);
+        return back()->with('message', 'Role assigned.');
     }
 }
