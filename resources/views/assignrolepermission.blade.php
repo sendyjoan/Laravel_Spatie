@@ -18,7 +18,7 @@
                                 <p><b>Permission List : </b></p>
                                 @if ($role->permissions)
                                     @foreach ($role->permissions as $role_permission)
-                                        <button type="button" class="btn btn-secondary btn-sm" disabled>{{$role_permission->name}}</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$role_permission->id}}" >{{$role_permission->name}}</button>
                                     @endforeach
                                 @endif
                             </div>
@@ -35,7 +35,7 @@
                                         <span class="text-red-400 text-sm">{{ $message }}</span>
                                     @enderror
                                     <br>
-                                    <button type="submit" class="btn btn-secondary btn-sm">Button</button>
+                                    <button type="submit" class="btn btn-secondary btn-sm">Assign</button>
                                 </form>
                             </div>
                         </div>
@@ -45,4 +45,34 @@
         </div>
     </div>
 </div>
+@foreach ($role->permissions as $permis)
+<div class="modal fade" id="modal-delete-{{$permis->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="py-3 text-center">
+                    <i class="ni ni-bell-55 ni-3x"></i>
+                    <h4 class="text-gradient text-danger mt-4">Are you sure to delete this permission?</h4>
+                    <h4>{{$permis->name}}</h4>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form action="{{route('roles.permissions.revoke', [$role->id, $permis->id])}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-sm">Ok, Got it</button>
+                </form>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
