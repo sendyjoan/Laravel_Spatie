@@ -19,7 +19,7 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jabatan Fungsional</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Joined Date</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
@@ -45,15 +45,19 @@
                       <p class="text-xs text-secondary mb-0">Organization</p>
                     </td>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Online</span>
+                      @foreach ($user->roles as $role)
+                        <span class="badge badge-sm bg-gradient-success">{{$role->name}}</span>
+                      @endforeach
                     </td>
                     <td class="align-middle text-center">
                       <span class="text-secondary text-xs font-weight-bold">{{$user->created_at}}</span>
                     </td>
                     <td class="align-middle text-center">
-                        <button type="button" class="btn bg-gradient-success btn-sm" data-bs-toggle="modal" data-bs-target="#show-role-modal"><i class="ni ni-pin-3"></i></button>
-                        <button type="button" class="btn bg-gradient-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit-role-modal"><i class="ni ni-settings"></i></button>
-                        <button type="button" class="btn bg-gradient-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-role-modal"><i class="ni ni-basket"></i></button>
+                      <a href="{{ route('users.show', $user->id)}}">
+                        <button type="button" class="btn bg-gradient-success btn-sm"><i class="ni ni-pin-3"></i></button>
+                      </a>
+                        <button type="button" class="btn bg-gradient-info btn-sm" ><i class="ni ni-settings"></i></button>
+                        <button type="button" class="btn bg-gradient-danger btn-sm" ><i class="ni ni-basket"></i></button>
                     </td>
                   </tr>
                   @endforeach
